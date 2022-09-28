@@ -3,10 +3,10 @@ name: download
 on:
   push:
     branches:
-      - master
+      - test
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  "30 23 * *3"
+    - cron:  "30 23 * * 3"
 
 jobs:
   scheduled-cdc-mortality:
