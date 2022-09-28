@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: ${{ github.head_ref }}
+          ref: master
 
       - name: Download
         run: curl --retry 20 --fail https://data.cdc.gov/api/views/xkkf-xrst/rows.csv?accessType=DOWNLOAD | gzip -9 > $(date +"%Y-%m-%d")Excess.csv.gz
