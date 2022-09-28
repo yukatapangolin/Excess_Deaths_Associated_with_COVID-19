@@ -3,7 +3,7 @@ name: download-cdc-mortality
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '03 20 * * 3'
+    - cron:  '03 16 * * 3'
 
 jobs:
   download-cdc-mortality:
@@ -15,7 +15,7 @@ jobs:
         ref: ${{ github.head_ref }}
 
     - name: Download
-      run: curl --retry 20 --fail https://data.cdc.gov/api/views/xkkf-xrst/rows.csv?accessType=DOWNLOAD | gzip -9 > $(date +"%Y-%m-%d")Excess.csv
+      run: curl --retry 20 --fail https://data.cdc.gov/api/views/xkkf-xrst/rows.csv?accessType=DOWNLOAD | gzip -9 > $(date +"%Y-%m-%d")Excess.csv.gz
       shell: bash
 
     - uses: stefanzweifel/git-auto-commit-action@v4
