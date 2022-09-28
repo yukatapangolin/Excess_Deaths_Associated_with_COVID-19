@@ -3,21 +3,21 @@ name: download-cdc-mortality
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '03 16 * * 3'
+    - cron:  '17 16 * * 3'
 
 jobs:
   download-cdc-mortality:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.head_ref }}
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
 
-    - name: Download
-      run: curl --retry 20 --fail https://data.cdc.gov/api/views/xkkf-xrst/rows.csv?accessType=DOWNLOAD | gzip -9 > $(date +"%Y-%m-%d")Excess.csv.gz
-      shell: bash
+      - name: Download
+        run: curl --retry 20 --fail https://data.cdc.gov/api/views/xkkf-xrst/rows.csv?accessType=DOWNLOAD | gzip -9 > $(date +"%Y-%m-%d")Excess.csv.gz
+        shell: bash
 
-    - uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: CDC Data
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: CDC Data
