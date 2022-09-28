@@ -1,14 +1,13 @@
-name: download-cdc-mortality
+name: download
 
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '03 * * * *'
+    - cron:  "*/5 * * * *"
 
 jobs:
-  download-cdc-mortality:
+  scheduled-cdc-mortality:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
         with:
